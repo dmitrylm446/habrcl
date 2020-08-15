@@ -152,7 +152,7 @@
                             needLineBreak = (['P', 'DIV', 'BR', 'H1', 'H2', 'H3', 'H4', 'H5', 'PRE', 'UL', 'OL'].indexOf(tagName) >= 0);
                         }
 
-                        t = t.replace(/(^\s+|\s+$)/gs, '');
+                        t = t.replace(/(^\s+|\s+$)/g, '');
                         if (t)
                             txt.push(t);
 
@@ -170,7 +170,7 @@
 
     function getArticle(path, proc) {
         let dd = getPath(path);
-        let fn = dd.pop().replace(/(^"|"$)/, '');
+        let fn = dd.pop().replace(/(^"|"$)/g, '');
         let d = '/' + dd.join('/');
 
         if (dd.length == 0)
@@ -343,12 +343,12 @@
 
             term = $('#term_demo').terminal(function(command) {
                 if (command && command !== '') {
-                    command = command.replace(/(^ *| *$)/, '');
+                    command = command.replace(/(^ *| *$)/g, '');
                     var cmd = command.replace(/ .*/, '');
                     var v = commands[cmd];
                     var c = v?.cmd;
                     if (c) {
-                        var args = command.replace(/^[^ ]* +/, '').replace(/(^ *| *$)/, '');
+                        var args = command.replace(/^[^ ]* +/, '').replace(/(^ *| *$)/g, '');
                         if (command.indexOf(' ') < 0)
                             args = '';
 
