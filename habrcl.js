@@ -1,6 +1,12 @@
 
 (function() {
 
+    if(window.location.hostname != 'habr.com')
+    {
+        alert('Sorry, only for desktop version of habr.com web site.');
+        return;
+    }
+
     var ascr;
 
     $(document).ready(function() {
@@ -154,7 +160,7 @@
                             txt.push(' ');
                     });
 
-                    cachedArticles[dir + '/' + article.n] = { a: txt, r: (new Date()).getTime(), u: article.u };
+                    cachedArticles[dir + '/' + article.n] = { a: txt, r: (new Date()).getTime(), u: article.u, n: article.n };
 
                     resolve(txt);
                 });
